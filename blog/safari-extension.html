@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function(){
+  try {
+    var stored = localStorage.getItem('weeshlist-theme');
+    var theme = stored || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add to Weeshlist From Any App: The Safari Extension, Explained — Weeshlist Blog</title>
+<meta name="description" content="How the browser button works, why it doesn't need the app open, and how to turn it on in under a minute.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+<meta property="og:title" content="Add to Weeshlist From Any App: The Safari Extension, Explained — Weeshlist Blog">
+<meta property="og:description" content="How the browser button works, why it doesn't need the app open, and how to turn it on in under a minute.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<style>
+  :root {
+    --ink: #16121A; --ink-soft: #6E6272; --muted: #A297A6;
+    --paper: #FFFFFF; --paper-soft: #FBF1E7;
+    --line: #ECE0D6; --line-strong: #DED0C3;
+    --coral: #FF3E7F; --sky: #FFC145;
+    --grad: linear-gradient(135deg, #FFC144 0%, #FF7A45 45%, #FF3E7F 100%);
+    --font-display: ui-rounded, "SF Pro Rounded", "SFRounded", -apple-system, system-ui, sans-serif;
+    --font-body: -apple-system, "SF Pro Text", system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#FFFFFF; --ink-soft:#C7BCCB; --muted:#8B8093; --paper:#130F17; --paper-soft:#1D1622; --line:rgba(255,255,255,0.12); --line-strong:rgba(255,255,255,0.2); --coral:#FF6C9B; --sky:#FFD166; --grad: linear-gradient(135deg, #FFC363 0%, #FF8F63 45%, #FF6C9B 100%); color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --ink:#FFFFFF; --ink-soft:#C7BCCB; --muted:#8B8093; --paper:#130F17; --paper-soft:#1D1622; --line:rgba(255,255,255,0.12); --line-strong:rgba(255,255,255,0.2); --coral:#FF6C9B; --sky:#FFD166; --grad: linear-gradient(135deg, #FFC363 0%, #FF8F63 45%, #FF6C9B 100%); color-scheme: dark; }
+  :root[data-theme="light"] { --ink:#16121A; --ink-soft:#6E6272; --muted:#A297A6; --paper:#FFFFFF; --paper-soft:#FBF1E7; --line:#ECE0D6; --line-strong:#DED0C3; --coral:#FF3E7F; --sky:#FFC145; --grad: linear-gradient(135deg, #FFC144 0%, #FF7A45 45%, #FF3E7F 100%); color-scheme: light; }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, .brand-word { font-family: var(--font-display); font-weight: 800; }
+  .eyebrow { font-family: var(--font-mono); }
+  h1, h2, h3 { text-wrap: balance; }
+  a { color: var(--coral); text-decoration: none; }
+  a.plain:hover { text-decoration: underline; }
+
+  .wrap { max-width: 700px; margin: 0 auto; padding: 0 28px; }
+
+  .topnav { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); background: color-mix(in srgb, var(--paper) 72%, transparent); border-bottom: 1px solid var(--line); }
+  .topnav-row { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 700px; margin: 0 auto; padding: 0 28px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; color: var(--ink) !important; text-decoration: none !important; }
+  .brand img { width: 26px; height: 26px; border-radius: 8px; flex-shrink: 0; }
+  .back { font-size: 13.5px; font-weight: 700; color: var(--muted) !important; white-space: nowrap; }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 0 16px; }
+    .topnav-row { gap: 8px; height: 58px; }
+    .brand span.brand-word { display: none; }
+    .brand img { width: 24px; height: 24px; }
+    .back { font-size: 11.5px; }
+    .theme-toggle { width: 32px; height: 32px; }
+    .theme-toggle svg { width: 15px; height: 15px; }
+  }
+  @media (max-width: 340px) {
+    .wrap { padding: 0 12px; }
+    .back { font-size: 10.5px; }
+  }
+
+  header.hero { padding: 28px 0 0; }
+  .post-tag {
+    display: inline-flex; padding: 6px 12px; border-radius: 999px;
+    background: color-mix(in srgb, var(--coral) 16%, transparent);
+    color: var(--coral); font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .02em; margin-bottom: 18px;
+  }
+  h1.title { font-family: var(--font-display); font-size: clamp(30px, 4.6vw, 46px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; margin: 0; }
+  .meta { display: flex; gap: 14px; align-items: center; margin-top: 20px; font-size: 13.5px; color: var(--muted); font-weight: 600; }
+  .meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); }
+
+  .hero-band {
+    margin-top: 32px;
+    height: 220px;
+    border-radius: 22px;
+    background: var(--grad);
+  }
+
+  article { padding: 44px 0 0; }
+  .lead { font-size: 19px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 8px; }
+
+  .prose h2 { font-family: var(--font-display); font-size: 24px; font-weight: 800; letter-spacing: -0.01em; margin: 44px 0 16px; }
+  .prose h3 { font-family: var(--font-display); font-size: 18.5px; font-weight: 800; margin: 30px 0 10px; }
+  .prose p { font-size: 16.5px; line-height: 1.8; color: var(--ink-soft); margin: 0 0 18px; }
+  .prose ul, .prose ol { margin: 0 0 20px; padding-left: 22px; }
+  .prose li { font-size: 16.5px; line-height: 1.75; color: var(--ink-soft); margin-bottom: 8px; }
+  .prose strong { color: var(--ink); }
+
+  .pull {
+    margin: 34px 0;
+    padding: 26px 28px;
+    border-left: 3px solid var(--coral);
+    background: var(--paper-soft);
+    border-radius: 0 16px 16px 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+  }
+
+  .ref-table { width: 100%; border-collapse: collapse; margin: 8px 0 24px; font-size: 15px; }
+  .ref-table th, .ref-table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .ref-table th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 700; }
+  .ref-table td { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .ref-table td:first-child { color: var(--ink); font-weight: 600; }
+  .table-wrap { overflow-x: auto; }
+
+  .inline-cta {
+    margin: 40px 0;
+    padding: 28px;
+    border-radius: 20px;
+    background: var(--paper-soft);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .inline-cta .icon { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; display: block; }
+  .inline-cta h4 { font-family: var(--font-display); font-size: 16px; font-weight: 800; margin: 0 0 4px; }
+  .inline-cta p { font-size: 14px; color: var(--ink-soft); margin: 0; }
+  .inline-cta .btn {
+    padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: 14px; color: #fff;
+    background: var(--grad);
+    flex-shrink: 0;
+  }
+
+  .disclaimer { margin-top: 40px; font-size: 13px; color: var(--muted); line-height: 1.6; border-top: 1px solid var(--line); padding-top: 20px; }
+
+  .cta-banner { margin-top: 64px; padding: 64px 0; background: var(--ink); }
+  :root[data-theme="dark"] .cta-banner { background: var(--paper-soft); }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; color: var(--paper); max-width: 700px; margin: 0 auto; padding: 0 28px; }
+  :root[data-theme="dark"] .cta-inner { color: var(--ink); }
+  .cta-inner h2 { font-family: var(--font-display); font-size: clamp(22px, 3vw, 28px); font-weight: 800; letter-spacing: -0.015em; margin: 0; }
+  .cta-inner p { margin-top: 8px; color: color-mix(in srgb, var(--paper) 60%, transparent); font-size: 15px; }
+  :root[data-theme="dark"] .cta-inner p { color: var(--ink-soft); }
+  .store-badge { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 14px; background: var(--grad); color: #fff; font-weight: 700; }
+  .store-badge svg { width: 24px; height: 24px; }
+  .store-badge .lines { display: flex; flex-direction: column; line-height: 1.15; }
+  .store-badge .lines small { font-size: 10.5px; font-weight: 600; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: .04em; }
+  .store-badge .lines span { font-size: 15.5px; }
+
+  footer { padding: 32px 0; border-top: 1px solid var(--line); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); max-width: 700px; margin: 0 auto; padding: 0 28px; }
+
+  .theme-toggle {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--paper-soft);
+    display: flex; align-items: center; justify-content: center; color: var(--ink);
+    flex-shrink: 0; transition: transform .2s ease, color .2s ease;
+  }
+  .theme-toggle:hover { transform: translateY(-1px); color: var(--coral); }
+  .theme-toggle:active { transform: translateY(0) scale(0.92); }
+  .theme-toggle svg { width: 17px; height: 17px; }
+  .theme-toggle .icon-sun, .theme-toggle .icon-moon { display: none; }
+  @media (prefers-color-scheme: dark) { .theme-toggle .icon-sun { display: block; } }
+  @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) { .theme-toggle .icon-moon { display: block; } }
+  :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+  :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+  :root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+</style>
+
+<nav class="topnav">
+  <div class="topnav-row">
+    <a class="brand" href="../index.html" target="_blank" rel="noopener">
+      <img src="../assets/icon.png" alt="Weeshlist icon" /><span class="brand-word">Weeshlist</span>
+    </a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a class="back" href="../index.html#blog" target="_blank" rel="noopener">← Back to Blog</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="post-tag">Feature</span>
+    <h1 class="title">Add to Weeshlist From Any App: The Safari Extension, Explained</h1>
+    <div class="meta">
+      <span>Weeshlist Team</span><span class="dot"></span><span>June 26, 2026</span><span class="dot"></span><span>4 min read</span>
+    </div>
+    <div class="hero-band" role="img" aria-label="Illustrative gradient banner"></div>
+  </div>
+</header>
+
+<article>
+  <div class="wrap">
+    <div class="prose">
+      <p class="lead">The single biggest reason a wish never gets saved isn't forgetfulness — it's friction. You're already three taps deep in a shopping app, and switching to Weeshlist, finding the share sheet, and pasting the link is just enough extra effort to lose the moment. The Safari extension exists to remove that friction entirely.</p>
+
+      <h2>A button that lives where you're already shopping</h2>
+      <p>Once enabled, the Weeshlist extension adds a button directly on product pages in Safari. No switching apps, no copying a URL, no opening a share sheet — you tap the button on the page you're already looking at, and the item is saved.</p>
+      <p>Behind the scenes, the extension reads the same product data Weeshlist would extract from a pasted link — name, price, photo — and hands it straight to the app through a shared queue, so it's waiting for you the next time you open Weeshlist, even if you never left Safari.</p>
+
+      <div class="pull">The best version of a feature like this is the one you forget is even running — it's just a button on the page.</div>
+
+      <h2>Turning it on</h2>
+      <p>It's a one-time setup: open Safari's Settings, go to Extensions, enable Weeshlist, and allow it on the sites you shop from most. After that, the button appears automatically on product pages across those sites — no need to repeat the setup per store.</p>
+      <p>The extension only activates when you tap it. It doesn't run in the background, track pages you haven't chosen to save, or read anything beyond the page you're actively viewing at the moment you tap.</p>
+
+      <h3>Built after watching where wishes actually get lost</h3>
+      <p>This wasn't the first feature shipped — it came after noticing how often "I'll add this later" turns into never. Removing the extra steps between wanting something and saving it was the direct fix, and it's the kind of small, unglamorous improvement that ends up mattering the most.</p>
+
+      <div class="inline-cta">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <img class="icon" src="../assets/icon.png" alt="Weeshlist icon" />
+          <div>
+            <h4>Turn it on in under a minute</h4>
+            <p>Enable the Weeshlist button in Safari Settings → Extensions.</p>
+          </div>
+        </div>
+        <a class="btn" href="https://apps.apple.com/pl/app/wishlist-maker-weeshlist/id6744776543" target="_blank" rel="noopener">Get Weeshlist free</a>
+      </div>
+
+      <h3>The short version</h3>
+      <ol>
+        <li>The extension adds a Weeshlist button directly on product pages in Safari.</li>
+        <li>Tapping it saves the page's product data without opening the app or copying a link.</li>
+        <li>Enable it once in Safari Settings → Extensions, allow it on your shopping sites.</li>
+        <li>It only reads a page when you tap the button — nothing runs in the background.</li>
+      </ol>
+
+      <p>A wishlist app is only as good as how easily you actually use it. The Safari extension was built to make "later" unnecessary — the wish is already saved before you've closed the tab.</p>
+
+      <div class="disclaimer">Extension availability and behavior may vary slightly by iOS and Safari version.</div>
+    </div>
+  </div>
+</article>
+
+<div class="cta-banner">
+  <div class="cta-inner">
+    <div>
+      <h2>One tap in Safari. Done.</h2>
+      <p>Turn on the extension and never lose a wish again.</p>
+    </div>
+    <a class="store-badge" href="https://apps.apple.com/pl/app/wishlist-maker-weeshlist/id6744776543" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.55C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.5 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.02.07-.42 1.44-1.38 2.82zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.34 1.05-3.11z"/></svg>
+      <span class="lines"><small>Download on the</small><span>App Store</span></span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-row">
+    <span>Weeshlist</span>
+    <span>&copy; 2026 Yevhen Basistyi. All rights reserved.</span>
+  </div>
+</footer>
+<script>
+(function(){
+  var btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('weeshlist-theme', next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

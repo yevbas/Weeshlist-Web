@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function(){
+  try {
+    var stored = localStorage.getItem('weeshlist-theme');
+    var theme = stored || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Weeshlist</title>
+<meta name="description" content="Privacy Policy for the Weeshlist wishlist iOS app.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<meta property="og:title" content="Privacy Policy — Weeshlist">
+<meta property="og:description" content="Privacy Policy for the Weeshlist wishlist iOS app.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<style>
+  :root {
+    --ink: #16121A; --ink-soft: #6E6272; --muted: #A297A6;
+    --paper: #FFFFFF; --paper-soft: #FBF1E7;
+    --line: #ECE0D6; --line-strong: #DED0C3;
+    --coral: #FF3E7F; --sky: #FFC145; --sky-ink: #B4690E;
+    --grad: linear-gradient(135deg, #FFC144 0%, #FF7A45 45%, #FF3E7F 100%);
+    --font-display: ui-rounded, "SF Pro Rounded", "SFRounded", -apple-system, system-ui, sans-serif;
+    --font-body: -apple-system, "SF Pro Text", system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#FFFFFF; --ink-soft:#C7BCCB; --muted:#8B8093; --paper:#130F17; --paper-soft:#1D1622; --line:rgba(255,255,255,0.12); --line-strong:rgba(255,255,255,0.2); --coral:#FF6C9B; --sky:#FFD166; --sky-ink:#FFD166; --grad: linear-gradient(135deg, #FFC363 0%, #FF8F63 45%, #FF6C9B 100%); color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --ink:#FFFFFF; --ink-soft:#C7BCCB; --muted:#8B8093; --paper:#130F17; --paper-soft:#1D1622; --line:rgba(255,255,255,0.12); --line-strong:rgba(255,255,255,0.2); --coral:#FF6C9B; --sky:#FFD166; --sky-ink:#FFD166; --grad: linear-gradient(135deg, #FFC363 0%, #FF8F63 45%, #FF6C9B 100%); color-scheme: dark; }
+  :root[data-theme="light"] { --ink:#16121A; --ink-soft:#6E6272; --muted:#A297A6; --paper:#FFFFFF; --paper-soft:#FBF1E7; --line:#ECE0D6; --line-strong:#DED0C3; --coral:#FF3E7F; --sky:#FFC145; --sky-ink:#B4690E; --grad: linear-gradient(135deg, #FFC144 0%, #FF7A45 45%, #FF3E7F 100%); color-scheme: light; }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  h1, h2, .brand-word { font-family: var(--font-display); font-weight: 800; }
+  .eyebrow { font-family: var(--font-mono); }
+  a { color: var(--coral); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+  .topnav { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); background: color-mix(in srgb, var(--paper) 72%, transparent); border-bottom: 1px solid var(--line); }
+  .topnav-row { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 760px; margin: 0 auto; padding: 0 28px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; color: var(--ink) !important; text-decoration: none !important; }
+  .brand img { width: 26px; height: 26px; border-radius: 8px; flex-shrink: 0; }
+  .back { font-size: 13.5px; font-weight: 700; color: var(--muted) !important; white-space: nowrap; }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 0 16px; }
+    .topnav-row { gap: 8px; height: 58px; }
+    .brand span.brand-word { display: none; }
+    .brand img { width: 24px; height: 24px; }
+    .back { font-size: 11.5px; }
+    .theme-toggle { width: 32px; height: 32px; }
+    .theme-toggle svg { width: 15px; height: 15px; }
+  }
+  @media (max-width: 340px) {
+    .wrap { padding: 0 12px; }
+    .back { font-size: 10.5px; }
+  }
+
+  header.hero { padding: 32px 0 36px; border-bottom: 1px solid var(--line); }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--coral); margin-bottom: 16px; }
+  .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--grad); }
+  h1 { font-size: clamp(30px, 4.4vw, 42px); font-weight: 800; letter-spacing: -0.015em; line-height: 1.08; margin: 0; }
+  .updated { margin-top: 14px; font-size: 13.5px; color: var(--muted); }
+  .lead { margin-top: 22px; font-size: 16px; line-height: 1.7; color: var(--ink-soft); max-width: 62ch; }
+
+  article { padding: 48px 0 96px; }
+  .clause { padding: 30px 0; border-top: 1px solid var(--line); }
+  .clause:first-child { border-top: none; padding-top: 0; }
+  .clause-num { font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; letter-spacing: 0.02em; color: var(--coral); text-transform: uppercase; margin-bottom: 8px; }
+  .clause h2 { font-family: var(--font-display); font-size: 19px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.01em; }
+  .clause p { font-size: 15.5px; line-height: 1.75; color: var(--ink-soft); margin: 0 0 12px; }
+  .clause p:last-child { margin-bottom: 0; }
+  .clause ul { margin: 0 0 12px; padding-left: 20px; }
+  .clause li { font-size: 15.5px; line-height: 1.75; color: var(--ink-soft); margin-bottom: 6px; }
+
+  .partner-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 4px 0 4px; }
+  @media (max-width: 560px) { .partner-grid { grid-template-columns: 1fr; } }
+  .partner-card { padding: 16px 18px; background: var(--paper-soft); border-radius: 18px; }
+  .partner-card b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 14.5px; margin-bottom: 4px; }
+  .partner-card span { font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; }
+
+  .region-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 4px; }
+  @media (max-width: 560px) { .region-row { grid-template-columns: 1fr; } }
+  .region-card { padding: 18px 20px; border-radius: 18px; background: var(--paper-soft); }
+  .region-card b { display: block; font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--sky-ink); margin-bottom: 8px; }
+  .region-card p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
+
+  .contact-box { margin-top: 8px; padding: 20px 22px; background: var(--paper-soft); border-radius: 20px; font-size: 15px; display: flex; flex-direction: column; gap: 12px; }
+  .contact-box .row b { font-weight: 700; display: block; margin-bottom: 2px; }
+
+  footer { padding: 32px 0; border-top: 1px solid var(--line); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+  .theme-toggle {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--paper-soft);
+    display: flex; align-items: center; justify-content: center; color: var(--ink);
+    flex-shrink: 0; transition: transform .2s ease, color .2s ease;
+  }
+  .theme-toggle:hover { transform: translateY(-1px); color: var(--coral); }
+  .theme-toggle:active { transform: translateY(0) scale(0.92); }
+  .theme-toggle svg { width: 17px; height: 17px; }
+  .theme-toggle .icon-sun, .theme-toggle .icon-moon { display: none; }
+  @media (prefers-color-scheme: dark) { .theme-toggle .icon-sun { display: block; } }
+  @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) { .theme-toggle .icon-moon { display: block; } }
+  :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+  :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+  :root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+</style>
+
+<nav class="topnav">
+  <div class="topnav-row">
+    <a class="brand" href="index.html" target="_blank" rel="noopener">
+      <img src="assets/icon.png" alt="Weeshlist icon" /><span class="brand-word">Weeshlist</span>
+    </a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a class="back" href="index.html" target="_blank" rel="noopener">← Back to Weeshlist</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated July 20, 2026 · Applies to the Weeshlist iOS app</p>
+    <p class="lead">Yevhen Basistyi ("we," "our," or "us") respects your privacy and is committed to protecting it. This Privacy Policy explains how Weeshlist (the "App") handles information. By using the App, you agree to the practices described here.</p>
+  </div>
+</header>
+
+<article>
+  <div class="wrap">
+
+    <div class="clause">
+      <div class="clause-num">01</div>
+      <h2>Information we collect</h2>
+      <p>To let your wishlist sync across devices and be visible to the friends you choose to follow, Weeshlist creates an account for you and stores your wishes — item name, price, currency, photo, shop link, and priority — in the cloud, along with a display name and a unique ID (UID) used so friends can find your list.</p>
+      <p>The App integrates with the following third-party services:</p>
+      <div class="partner-grid">
+        <div class="partner-card"><b>Firebase (Google)</b><span>Authentication and cloud storage (Firestore) for your account, wishes, and friend connections.</span></div>
+        <div class="partner-card"><b>RevenueCat</b><span>Manages in-app subscriptions and purchases through your App Store account.</span></div>
+        <div class="partner-card"><b>Google Mobile Ads</b><span>Shows ads to free users; may use device identifiers for ad delivery and measurement.</span></div>
+        <div class="partner-card"><b>AI product-extraction service</b><span>Reads a pasted page's content to fill in a wish's name, price, and photo. Only the page content and link you submit is sent — not your account data.</span></div>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">02</div>
+      <h2>Device permissions</h2>
+      <p>Weeshlist may request permission to send you local or push notifications — for example, when a friend adds a wish. It may also request access to the clipboard when you tap "Paste" to save a product link, and to Photos if you choose to attach your own image to a wish. No other device permissions are requested.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">03</div>
+      <h2>The Safari extension</h2>
+      <p>The Weeshlist Safari extension reads the page you're actively viewing only when you tap its button, to extract a product's name, price, and image. It does not run in the background, track your browsing history, or collect data from pages you don't explicitly save.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">04</div>
+      <h2>How data is used</h2>
+      <p>Your wishes and profile are used to power the core features of the App: showing your wishlist, syncing it across your devices, and displaying it to friends you've connected with. Free users see ads served through Google Mobile Ads. Weeshlist does not sell your personal data.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">05</div>
+      <h2>Data sharing</h2>
+      <p>We share only what's needed with:</p>
+      <ul>
+        <li><b>Firebase (Google)</b> — to store and sync your account and wishlist data.</li>
+        <li><b>RevenueCat</b> — to process and manage your subscription, tied to your App Store account.</li>
+        <li><b>Google Mobile Ads</b> — to serve ads to free-tier users.</li>
+        <li><b>Friends you connect with</b> — your wishlist, display name, and completed/priority status are visible to friends who follow your list via your UID.</li>
+      </ul>
+      <p>We do not share your wishlist or account data with any party outside of these integrations and the friends you choose to connect with.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">06</div>
+      <h2>Data storage and security</h2>
+      <p>Your account and wishlist data is stored in Firebase (Firestore), encrypted in transit, and accessible only to your account and the friends you've connected with. Some data — such as a local cache of your wishes — is also stored on-device to keep the app responsive offline.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">07</div>
+      <h2>Your choices</h2>
+      <p>You can edit or delete individual wishes at any time, remove a friend connection to stop sharing your list with them, and request full account deletion by contacting us below — this removes your wishes and profile from our systems.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">08</div>
+      <h2>Regional compliance</h2>
+      <p>We aim to comply with applicable data protection regulations, including:</p>
+      <div class="region-row">
+        <div class="region-card"><b>GDPR — European Union</b><p>EU users may request access to, correction of, or deletion of their data by contacting us below.</p></div>
+        <div class="region-card"><b>CCPA — California</b><p>California residents may contact us with any request regarding personal data we process.</p></div>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">09</div>
+      <h2>Children's privacy</h2>
+      <p>Weeshlist is not directed at children and does not knowingly collect data from anyone under 13. If you believe a child has created an account, contact us and we will delete it.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">10</div>
+      <h2>Contact</h2>
+      <p>For privacy-related questions or requests, including account deletion, or for general app support:</p>
+      <div class="contact-box">
+        <div class="row"><b>Privacy inquiries</b><a href="mailto:yevhen.basistyi@gmail.com">yevhen.basistyi@gmail.com</a></div>
+        <div class="row"><b>App support</b><a href="mailto:yevhen.basistyi@gmail.com">yevhen.basistyi@gmail.com</a></div>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <div class="foot-row">
+    <span>Weeshlist</span>
+    <span>&copy; 2026 Yevhen Basistyi. All rights reserved.</span>
+  </div>
+</footer>
+<script>
+(function(){
+  var btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('weeshlist-theme', next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

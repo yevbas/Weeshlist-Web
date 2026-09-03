@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function(){
+  try {
+    var stored = localStorage.getItem('weeshlist-theme');
+    var theme = stored || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Use — Weeshlist</title>
+<meta name="description" content="Terms of Use for the Weeshlist wishlist iOS app.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<meta property="og:title" content="Terms of Use — Weeshlist">
+<meta property="og:description" content="Terms of Use for the Weeshlist wishlist iOS app.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<style>
+  :root {
+    --ink: #16121A; --ink-soft: #6E6272; --muted: #A297A6;
+    --paper: #FFFFFF; --paper-soft: #FBF1E7;
+    --line: #ECE0D6; --line-strong: #DED0C3;
+    --coral: #FF3E7F; --sky: #FFC145; --sky-ink: #B4690E;
+    --grad: linear-gradient(135deg, #FFC144 0%, #FF7A45 45%, #FF3E7F 100%);
+    --font-display: ui-rounded, "SF Pro Rounded", "SFRounded", -apple-system, system-ui, sans-serif;
+    --font-body: -apple-system, "SF Pro Text", system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#FFFFFF; --ink-soft:#C7BCCB; --muted:#8B8093; --paper:#130F17; --paper-soft:#1D1622; --line:rgba(255,255,255,0.12); --line-strong:rgba(255,255,255,0.2); --coral:#FF6C9B; --sky:#FFD166; --sky-ink:#FFD166; --grad: linear-gradient(135deg, #FFC363 0%, #FF8F63 45%, #FF6C9B 100%); color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --ink:#FFFFFF; --ink-soft:#C7BCCB; --muted:#8B8093; --paper:#130F17; --paper-soft:#1D1622; --line:rgba(255,255,255,0.12); --line-strong:rgba(255,255,255,0.2); --coral:#FF6C9B; --sky:#FFD166; --sky-ink:#FFD166; --grad: linear-gradient(135deg, #FFC363 0%, #FF8F63 45%, #FF6C9B 100%); color-scheme: dark; }
+  :root[data-theme="light"] { --ink:#16121A; --ink-soft:#6E6272; --muted:#A297A6; --paper:#FFFFFF; --paper-soft:#FBF1E7; --line:#ECE0D6; --line-strong:#DED0C3; --coral:#FF3E7F; --sky:#FFC145; --sky-ink:#B4690E; --grad: linear-gradient(135deg, #FFC144 0%, #FF7A45 45%, #FF3E7F 100%); color-scheme: light; }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  h1, h2, .brand-word { font-family: var(--font-display); font-weight: 800; }
+  .eyebrow { font-family: var(--font-mono); }
+  a { color: var(--coral); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+  .topnav { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); background: color-mix(in srgb, var(--paper) 72%, transparent); border-bottom: 1px solid var(--line); }
+  .topnav-row { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 760px; margin: 0 auto; padding: 0 28px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; color: var(--ink) !important; text-decoration: none !important; }
+  .brand img { width: 26px; height: 26px; border-radius: 8px; flex-shrink: 0; }
+  .back { font-size: 13.5px; font-weight: 700; color: var(--muted) !important; white-space: nowrap; }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 0 16px; }
+    .topnav-row { gap: 8px; height: 58px; }
+    .brand span.brand-word { display: none; }
+    .brand img { width: 24px; height: 24px; }
+    .back { font-size: 11.5px; }
+    .theme-toggle { width: 32px; height: 32px; }
+    .theme-toggle svg { width: 15px; height: 15px; }
+  }
+  @media (max-width: 340px) {
+    .wrap { padding: 0 12px; }
+    .back { font-size: 10.5px; }
+  }
+
+  header.hero { padding: 32px 0 36px; border-bottom: 1px solid var(--line); }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--coral); margin-bottom: 16px; }
+  .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--grad); }
+  h1 { font-size: clamp(30px, 4.4vw, 42px); font-weight: 800; letter-spacing: -0.015em; line-height: 1.08; margin: 0; }
+  .updated { margin-top: 14px; font-size: 13.5px; color: var(--muted); }
+  .lead { margin-top: 22px; font-size: 16px; line-height: 1.7; color: var(--ink-soft); max-width: 62ch; }
+
+  article { padding: 48px 0 96px; }
+  .clause { padding: 30px 0; border-top: 1px solid var(--line); }
+  .clause:first-child { border-top: none; padding-top: 0; }
+  .clause-num { font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; letter-spacing: 0.02em; color: var(--coral); text-transform: uppercase; margin-bottom: 8px; }
+  .clause h2 { font-family: var(--font-display); font-size: 19px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.01em; }
+  .clause p { font-size: 15.5px; line-height: 1.75; color: var(--ink-soft); margin: 0 0 12px; }
+  .clause p:last-child { margin-bottom: 0; }
+  .clause ul { margin: 0 0 12px; padding-left: 20px; }
+  .clause li { font-size: 15.5px; line-height: 1.75; color: var(--ink-soft); margin-bottom: 6px; }
+
+  .contact-box { margin-top: 8px; padding: 20px 22px; background: var(--paper-soft); border-radius: 20px; font-size: 15px; }
+
+  footer { padding: 32px 0; border-top: 1px solid var(--line); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+  .theme-toggle {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--paper-soft);
+    display: flex; align-items: center; justify-content: center; color: var(--ink);
+    flex-shrink: 0; transition: transform .2s ease, color .2s ease;
+  }
+  .theme-toggle:hover { transform: translateY(-1px); color: var(--coral); }
+  .theme-toggle:active { transform: translateY(0) scale(0.92); }
+  .theme-toggle svg { width: 17px; height: 17px; }
+  .theme-toggle .icon-sun, .theme-toggle .icon-moon { display: none; }
+  @media (prefers-color-scheme: dark) { .theme-toggle .icon-sun { display: block; } }
+  @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) { .theme-toggle .icon-moon { display: block; } }
+  :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+  :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+  :root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+</style>
+
+<nav class="topnav">
+  <div class="topnav-row">
+    <a class="brand" href="index.html" target="_blank" rel="noopener">
+      <img src="assets/icon.png" alt="Weeshlist icon" /><span class="brand-word">Weeshlist</span>
+    </a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a class="back" href="index.html" target="_blank" rel="noopener">← Back to Weeshlist</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Legal</div>
+    <h1>Terms of Use</h1>
+    <p class="updated">Last updated July 20, 2026 · Applies to the Weeshlist iOS app</p>
+    <p class="lead">These Terms of Use govern your use of Weeshlist (the "App"), built by Yevhen Basistyi. By downloading or using the App, you agree to these Terms.</p>
+  </div>
+</header>
+
+<article>
+  <div class="wrap">
+
+    <div class="clause">
+      <div class="clause-num">01</div>
+      <h2>Acceptance of terms</h2>
+      <p>By downloading, installing, or using Weeshlist (the "App"), you agree to be bound by these Terms of Use. If you do not agree, please do not use the App and uninstall it from your device.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">02</div>
+      <h2>Use of the app</h2>
+      <p>Weeshlist is intended for personal, non-commercial use, to help you create, save, and share wishlists, and to follow the wishlists of friends who choose to share theirs with you. There is no minimum age requirement to use the App, though users should have the legal capacity in their jurisdiction to agree to these Terms.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">03</div>
+      <h2>Accounts and friend connections</h2>
+      <p>Using Weeshlist's sync, sharing, and friends features requires an account. You're responsible for the accuracy of what you save to your wishlist and for who you choose to share your unique ID (UID) with. Weeshlist is not responsible for what a friend does with wishlist information you've chosen to share with them.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">04</div>
+      <h2>Third-party links and product data</h2>
+      <p>Weeshlist extracts product names, prices, images, and links from pages you paste or share, including via the Safari extension. This data comes from third-party shops we don't control — prices, availability, and links may change or become inaccurate after you save them. Weeshlist is not affiliated with, and does not guarantee the accuracy of, any shop or product page you link to.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">05</div>
+      <h2>Subscriptions and purchases</h2>
+      <p>Weeshlist offers optional premium access as monthly or annual subscriptions, or a one-time lifetime purchase, managed through RevenueCat. Current pricing and any trial terms are displayed within the App before purchase. Free accounts may see ads served through Google Mobile Ads.</p>
+      <p>All payments are processed through Apple's payment system (App Store). Refunds are handled under Apple's own refund policies; Weeshlist does not process refunds directly.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">06</div>
+      <h2>Limitation of liability</h2>
+      <p>To the fullest extent permitted by law, Weeshlist is not liable for:</p>
+      <ul>
+        <li>Errors, downtime, or interruptions in the App's functionality.</li>
+        <li>Inaccurate product data — price, availability, or images — pulled from a third-party page you saved.</li>
+        <li>Data loss resulting from device failure, account issues, or failure to maintain access to your account.</li>
+        <li>Failures or data-handling practices of third-party services the App relies on, namely Apple, Firebase, RevenueCat, and Google Mobile Ads.</li>
+      </ul>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">07</div>
+      <h2>Intellectual property</h2>
+      <p>All content within the App — including trademarks, logos, design, and software — is the property of Yevhen Basistyi and is protected by applicable copyright and trademark law. Unauthorized reproduction or use is prohibited.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">08</div>
+      <h2>Dispute resolution</h2>
+      <p>Disputes arising from your use of the App will first be addressed through good-faith negotiation and, where unresolved, through arbitration in accordance with applicable law. Nothing in this section limits your right to bring a claim in local courts where applicable law guarantees that right.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">09</div>
+      <h2>Changes to these terms</h2>
+      <p>We may update these Terms from time to time. If a change is significant, we'll notify you within the App. Continued use of the App after an update constitutes acceptance of the revised Terms.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">10</div>
+      <h2>Contact</h2>
+      <p>Questions about these Terms can be sent to:</p>
+      <div class="contact-box">
+        <b>Yevhen Basistyi</b><br>
+        <a href="mailto:yevhen.basistyi@gmail.com">yevhen.basistyi@gmail.com</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <div class="foot-row">
+    <span>Weeshlist</span>
+    <span>&copy; 2026 Yevhen Basistyi. All rights reserved.</span>
+  </div>
+</footer>
+<script>
+(function(){
+  var btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('weeshlist-theme', next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
